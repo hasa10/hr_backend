@@ -32,7 +32,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeDao.existsByEmail(employeeDto.getEmail())) {
             return "This email already exists";
         }
-
         employeeDao.save(modelMapper.map(employeeDto, EmployeeEntity.class));
         return "Employee added successfully.";
     }

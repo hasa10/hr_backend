@@ -23,10 +23,11 @@ public class EmployeeController {
     @PostMapping("/add")
     public ResponseEntity<String> add(@RequestBody EmployeeDto employeeDto) {
         String result = employeeService.add(employeeDto);
-        if (result.contains("successfully")) {
+        if (result.equalsIgnoreCase("Employee added successfully.")) {
             return ResponseEntity.ok(result);
         } else {
             return ResponseEntity.badRequest().body(result);
+
         }
     }
 
