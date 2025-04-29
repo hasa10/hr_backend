@@ -3,12 +3,13 @@ import lombok.RequiredArgsConstructor;
 import org.example.dto.EmployeeDto;
 import org.example.entity.EmployeeEntity;
 import org.example.service.EmployeeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/employee")
 @RequiredArgsConstructor
 @CrossOrigin
 public class EmployeeController {
@@ -20,9 +21,15 @@ public class EmployeeController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody EmployeeDto employeeDto) {
-        employeeService.add(employeeDto);
+    public ResponseEntity<String> add(@RequestBody EmployeeDto employeeDto) {
+        String result = employeeService.add(employeeDto);
+        if (result.contains("successfully")) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.badRequest().body(result);
+        }
     }
+
 
     @GetMapping("/search")
     public EmployeeDto search(@RequestParam Long id) {

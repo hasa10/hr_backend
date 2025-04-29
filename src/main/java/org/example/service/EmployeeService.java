@@ -8,7 +8,7 @@ import java.util.List;
 public interface EmployeeService {
     List<EmployeeDto> all();
 
-    void add(EmployeeDto employeeDto);
+    String add(EmployeeDto employeeDto);
 
     EmployeeDto search(Long id);
 

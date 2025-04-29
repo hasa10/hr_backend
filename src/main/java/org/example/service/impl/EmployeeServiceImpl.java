@@ -28,9 +28,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void add(EmployeeDto employeeDto) {
+    public String add(EmployeeDto employeeDto) {
+        if (employeeDao.existsByEmail(employeeDto.getEmail())) {
+            return "This email already exists";
+        }
+
         employeeDao.save(modelMapper.map(employeeDto, EmployeeEntity.class));
+        return "Employee added successfully.";
     }
+
 
     @Override
     public EmployeeDto search(Long id) {
