@@ -7,13 +7,13 @@ import org.example.repository.EmployeeDao;
 import org.example.service.EmployeeService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
+
     private final EmployeeDao employeeDao;
     private final ModelMapper modelMapper;
 
@@ -35,7 +35,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeDao.save(modelMapper.map(employeeDto, EmployeeEntity.class));
         return "Employee added successfully.";
     }
-
 
     @Override
     public EmployeeDto search(Long id) {

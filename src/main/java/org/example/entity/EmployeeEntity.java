@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "employee")
 public class EmployeeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

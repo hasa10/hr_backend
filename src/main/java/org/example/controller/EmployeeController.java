@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin
 public class EmployeeController {
+
     final EmployeeService employeeService;
 
     @GetMapping("/all")
@@ -30,7 +31,6 @@ public class EmployeeController {
 
         }
     }
-
 
     @GetMapping("/search")
     public EmployeeDto search(@RequestParam Long id) {
